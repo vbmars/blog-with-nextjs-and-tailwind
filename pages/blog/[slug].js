@@ -9,20 +9,22 @@ export default function BlogPage({ title, date, content }) {
   const hydratedContent = hydrate(content);
 
   return (
-    <div>
-      <Head>
+    <div >
+      <Head >
         <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <div className="border-b-2 border-gray-200 mb-4">
-          <h2 className="text-3xl font-bold">{title}</h2>
-          <div className="text-gray-600 text-md">
+      <main > 
+        <div className="border-2 border-gray-200 my-4 rounded-xl">
+        <div className="border-b-2 border-gray-200 mb-4 r ">
+          <h2 className="text-3xl font-bold mx-12 text-center my-6">{title}</h2>
+          <div className="text-gray-600 text-md mx-16">
             {format(parseISO(date), 'MMMM do, uuu')}
           </div>
         </div>
-        <div className="prose">{hydratedContent}</div>
+        <div className="prose mx-auto px-4">{hydratedContent}</div>
+        </div>
       </main>
     </div>
   );
@@ -38,6 +40,7 @@ export async function getStaticProps(context) {
     props: {
       ...data,
       date: data.date.toISOString(),
+      describ:data.describ,
       content: mdxSource,
     },
   };
